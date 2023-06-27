@@ -6,7 +6,8 @@
     </head>
     <body>
         <h1>회원가입</h1>
-        <form>
+        <form method="POST" action="join_ps.html">
+            <input type="hidden" name="mode" value="join">
             <dl>
                 <dt>가입구분</dt>
                 <dd>
@@ -28,7 +29,7 @@
             <dl>
                 <dt>아이디</dt>
                 <dd>
-                    <input type="text" name="userId" value="" required>
+                    <input type="text" name="userId" value="user01" required>
                 </dd>
             </dl>
             <dl>
@@ -65,7 +66,7 @@
             <dl>
                 <dt>생년월일</dt>
                 <dd>
-                    <input type="date" name="birthDt">
+                    <input type="date" name="birthDt" disabled>
                 </dd>
             </dl>
             <dl>
@@ -77,13 +78,27 @@
             <dl>
                 <dt>이메일</dt>
                 <dd>
-                    <input type="email" name="email">
+                    <!--<input type="email" name="email">-->
+                    <input type="text" name="email"> @ 
+                   <!--<select name="emailDomain" multiple size="">-->
+                    <select name="emailDomain">
+                        <option value="naver.com">naver.com</option>
+                        <option value="kakao.com">kakao.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="" selected>직접 입력</option>
+                    </select>
                 </dd>
             </dl>
             <dl>
                 <dt>나이</dt>
                 <dd>
                     <input type="range" name="age" min="16" max="100">
+                </dd>
+            </dl>
+            <dl>
+                <dt>자기소개</dt>
+                <dd>
+                    <textarea name="intro" rows="10" cols="100" placeholder="10자 이상 입력하세요..."></textarea>
                 </dd>
             </dl>
             <!--
