@@ -7,3 +7,7 @@ ul, ol { list-style: none; padding: 0; }
 dl, dt, dd, p { padding: 0; margin: 0; }
 a { text-decoration: none; }
 img { border: 0; }
+
+/* 헤더 영역 S */
+header { display: flex; justify-content: space-between; }
+/* 헤더 영역 E */
