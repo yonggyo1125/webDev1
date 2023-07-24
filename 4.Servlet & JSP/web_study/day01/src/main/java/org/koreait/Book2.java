@@ -7,6 +7,10 @@ public class Book2 {
 
     private Book2() {}
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     static class Builder {
         private Book2 instance = new Book2();
 
