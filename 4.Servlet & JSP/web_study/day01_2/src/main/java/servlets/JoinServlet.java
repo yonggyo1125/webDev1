@@ -1,5 +1,6 @@
 package servlets;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import java.io.PrintWriter;
 public class JoinServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*
         resp.setContentType("text/html; charset=UTF-8");
         //resp.setCharacterEncoding("UTF-8");
 
@@ -22,6 +24,9 @@ public class JoinServlet extends HttpServlet {
         out.print("회원명 : <input type='text' name='userNm'><br>");
         out.print("<button type='submit'>가입하기</button>");
         out.print("</form>");
+         */
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/join.jsp");
+        rd.forward(req, resp);
     }
 
     @Override
