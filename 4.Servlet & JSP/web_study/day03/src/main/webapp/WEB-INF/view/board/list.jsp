@@ -1,0 +1,2 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<h1>게시판 목록!</h1>
