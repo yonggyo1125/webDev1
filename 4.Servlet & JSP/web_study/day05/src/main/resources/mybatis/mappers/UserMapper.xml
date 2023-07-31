@@ -11,7 +11,7 @@
         <result column="regDt" property="regDt" />
         <result column="modDt" property="modDt" />
     </resultMap>
-    <insert id="insertUser" parameterType="models.Users">
+    <insert id="insertUser" parameterType="models.Users" useGeneratedKeys="true" keyProperty="userNo">
         INSERT INTO users (userId, userPw, userNm, email, mobile)
             VALUES (#{userId}, #{userPw}, #{userNm}, #{email}, #{mobile});
     </insert>

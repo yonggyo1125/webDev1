@@ -8,11 +8,14 @@ public class Ex01 {
     public static void main(String[] args) {
         SqlSession sqlSession = MyConnection.getSqlSession();
         Users user = new Users();
-        user.setUserId("user01");
+        user.setUserId("user02");
         user.setUserPw("12345678");
-        user.setUserNm("사용자01");
-        user.setEmail("user01@test.org");
+        user.setUserNm("사용자02");
+        user.setEmail("user02@test.org");
         user.setMobile("01000000000");
         int affectedRows = sqlSession.insert("insertUser", user);
+        System.out.println(affectedRows);
+
+        sqlSession.commit();
     }
 }
