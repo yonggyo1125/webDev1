@@ -10,6 +10,9 @@
         <property name="username" value="kanban" />
         <property name="password" value="aA!123456" />
     </properties>
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" />
         <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler" />
