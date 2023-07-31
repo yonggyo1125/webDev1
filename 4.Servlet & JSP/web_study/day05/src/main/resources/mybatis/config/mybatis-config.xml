@@ -38,9 +38,7 @@
             </dataSource>
         </environment>
     </environments>
-    <!--
-    <mappers>
-        <mapper resource="kr/codefty/board/mapper/MemberMapper.xml" />
-    </mappers>
-    -->
+   <mappers>
+       <mapper resource="mybatis/mappers/UserMapper.xml" />
+   </mappers>
 </configuration>
