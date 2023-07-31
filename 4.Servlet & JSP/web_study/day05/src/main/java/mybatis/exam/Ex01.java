@@ -8,13 +8,15 @@ public class Ex01 {
     public static void main(String[] args) {
         SqlSession sqlSession = MyConnection.getSqlSession();
         Users user = new Users();
-        user.setUserId("user02");
+        user.setUserId("user04");
         user.setUserPw("12345678");
-        user.setUserNm("사용자02");
-        user.setEmail("user02@test.org");
+        user.setUserNm("사용자04");
+        user.setEmail("user04@test.org");
         user.setMobile("01000000000");
-        int affectedRows = sqlSession.insert("insertUser", user);
+        int affectedRows = sqlSession.insert("UserMapper.insertUser", user);
+
         System.out.println(affectedRows);
+        System.out.println(user);
 
         sqlSession.commit();
     }

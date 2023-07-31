@@ -11,8 +11,39 @@
         <result column="regDt" property="regDt" />
         <result column="modDt" property="modDt" />
     </resultMap>
+
+    <select id="users" resultMap="userMap">
+        SELECT * FROM users ORDER BY regDt DESC;
+    </select>
+
+    <select id="user" parameterType="models.Users" resultMap="userMap">
+        SELECT * FROM users WHERE userId=#{userId};
+    </select>
+
+    <select id="total" resultType="long">
+        SELECT COUNT(*) FROM users;
+    </select>
+
     <insert id="insertUser" parameterType="models.Users" useGeneratedKeys="true" keyProperty="userNo">
         INSERT INTO users (userId, userPw, userNm, email, mobile)
             VALUES (#{userId}, #{userPw}, #{userNm}, #{email}, #{mobile});
     </insert>
+
+    <update id="update" parameterType="models.Users">
+        UPDATE users
+            SET
+                userNm=#{userNm},
+                <if test="email != null">
+                email=#{email},
+                </if>
+                <if test="mobile != null">
+                mobile=#{mobile},
+                </if>
+                modDt=NOW()
+        WHERE userId=#{userId}
+    </update>
+
+    <delete id="delete" parameterType="models.Users">
+        DELETE FROM users WHERE userId=#{userId};
+    </delete>
 </mapper>
