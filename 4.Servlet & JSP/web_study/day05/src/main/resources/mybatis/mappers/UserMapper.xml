@@ -31,15 +31,17 @@
 
     <update id="update" parameterType="models.Users">
         UPDATE users
-            SET
-                userNm=#{userNm},
+            <trim prefix="SET" suffixOverrides=",">
+                <if test="userNm != null">
+                    userNm=#{userNm},
+                </if>
                 <if test="email != null">
-                email=#{email},
+                    email=#{email},
                 </if>
                 <if test="mobile != null">
-                mobile=#{mobile},
+                    mobile=#{mobile},
                 </if>
-                modDt=NOW()
+            </trim>
         WHERE userId=#{userId}
     </update>
 
