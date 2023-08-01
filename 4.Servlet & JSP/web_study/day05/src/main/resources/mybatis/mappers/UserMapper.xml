@@ -12,8 +12,24 @@
         <result column="modDt" property="modDt" />
     </resultMap>
 
-    <select id="users" resultMap="userMap">
-        SELECT * FROM users ORDER BY regDt DESC;
+    <select id="users" parameterType="models.Users" resultMap="userMap">
+        SELECT * FROM users
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="userId != null">
+                AND userId LIKE #{userId}
+            </if>
+            <if test="userNm != null">
+                AND userNm LIKE #{userNm}
+            </if>
+            <if test="email != null">
+                AND email LIKE #{email}
+            </if>
+            <if test="mobile != null">
+                AND mobile LIKE #{mobile}
+            </if>
+
+        </trim>
+        ORDER BY regDt DESC;
     </select>
 
     <select id="user" parameterType="models.Users" resultMap="userMap">
@@ -41,6 +57,7 @@
                 <if test="mobile != null">
                     mobile=#{mobile},
                 </if>
+                modDt=NOW()
             </trim>
         WHERE userId=#{userId}
     </update>
