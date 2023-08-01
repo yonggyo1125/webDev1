@@ -4,7 +4,7 @@
 <c:set var="num" value="100" scope="page"/>
 <c:set var="num" value="200" scope="request"/>
 <c:set var="num" value="300" scope="application"/>
-<c:remove var="num" />
+<c:remove var="num" scope="application" />
 page : ${pageScope.num}<br>
 request : ${requestScope.num}<br>
 application : ${applicationScope.num}<br>
