@@ -16,3 +16,6 @@
 
 <h1>short</h1>
 <fmt:formatDate value="${date}" type="both" dateStyle="short" timeStyle="short" />
+
+<h1>pattern</h1>
+<fmt:formatDate value="${date}" type="both" pattern="yyyy.MM.dd a hh:mm" />
