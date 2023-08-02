@@ -7,3 +7,12 @@
 <fmt:formatDate value="${date}" type="date" /><br>
 <fmt:formatDate value="${date}" type="time" /><br>
 <fmt:formatDate value="${date}" type="both" /><br>
+
+<h1>full</h1>
+<fmt:formatDate value="${date}" type="both" dateStyle="full" timeStyle="full" />
+
+<h1>long</h1>
+<fmt:formatDate value="${date}" type="both" dateStyle="long" timeStyle="long" />
+
+<h1>short</h1>
+<fmt:formatDate value="${date}" type="both" dateStyle="short" timeStyle="short" />
