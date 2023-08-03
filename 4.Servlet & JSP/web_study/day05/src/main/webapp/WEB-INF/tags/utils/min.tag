@@ -3,6 +3,7 @@
 <%@ attribute name="var" required="true" %>
 <%@ attribute name="num1" type="java.lang.Integer" required="true" %>
 <%@ attribute name="num2" type="java.lang.Integer" required="true" %>
+<%@ variable name-from-attribute="var" alias="min" variable-class="java.lang.Integer" scope="AT_END" %>
 <%
     int min = num1 > num2 ? num2 : num1;
 %>
