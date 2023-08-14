@@ -12,4 +12,12 @@
         <param-name>key2</param-name>
         <param-value>value2</param-value>
     </context-param>
+    <filter>
+        <filter-name>myfilter1</filter-name>
+        <filter-class>filters.MyFilter1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>myfilter1</filter-name>
+        <url-pattern>/books</url-pattern>
+    </filter-mapping>
 </web-app>
