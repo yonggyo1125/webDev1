@@ -27,7 +27,7 @@ public class FileUploadServlet extends HttpServlet {
             String name = item.getFieldName();
             if (item.isFormField()) { // 일반 양식 데이터
                 String value = item.getString();
-                System.out.printf("일반 양식: %s, %v%n", name, value);
+                System.out.printf("일반 양식: %s, %s%n", name, value);
             } else { // 파일 데이터
                 System.out.printf("파일 : %s%n", name);
             }
