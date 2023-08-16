@@ -20,4 +20,11 @@ public class CommonRequestWrapper extends HttpServletRequestWrapper {
 
         System.out.println("요청전 공통 처리 부분");
     }
+
+    @Override
+    public String getParameter(String name) {
+        String value = super.getParameter(name);
+
+        return value.toUpperCase();
+    }
 }
