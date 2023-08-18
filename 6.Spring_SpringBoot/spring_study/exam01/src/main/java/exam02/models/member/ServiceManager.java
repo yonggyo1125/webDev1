@@ -12,4 +12,11 @@ public class ServiceManager {
     public JoinService joinService() {
        return new JoinService(memberDao(), joinValidator());
     }
+
+    public ListService listService() {
+        ListService service = new ListService();
+        service.setMemberDao(memberDao());
+
+        return service;
+    }
 }
