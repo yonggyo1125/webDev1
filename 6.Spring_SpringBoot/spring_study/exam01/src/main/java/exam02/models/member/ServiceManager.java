@@ -6,7 +6,7 @@ public class ServiceManager {
 
     private ServiceManager() {}
 
-    public ServiceManager getInstance() {
+    public static ServiceManager getInstance() {
         if (instance == null) {
             instance = new ServiceManager();
         }
