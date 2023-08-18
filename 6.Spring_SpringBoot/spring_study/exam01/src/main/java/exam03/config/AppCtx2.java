@@ -4,18 +4,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import exam03.models.member.*;
+import org.springframework.context.annotation.Import;
+
+import java.time.format.DateTimeFormatter;
 
 @Configuration
+@Import(AppCtx3.class)
 public class AppCtx2 {
-    @Bean
-    public MemberDao memberDao() {
-        return new MemberDao();
-    }
-
-    @Bean
-    public JoinValidator joinValidator() {
-        return new JoinValidator();
-    }
 
     @Bean
     public JoinService joinService() {
@@ -25,5 +20,12 @@ public class AppCtx2 {
     @Bean
     public ListService listService() {
         return new ListService();
+    }
+
+    @Bean
+    public DateTimeFormatter dateTimeFormatter() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
+
+        return formatter;
     }
 }

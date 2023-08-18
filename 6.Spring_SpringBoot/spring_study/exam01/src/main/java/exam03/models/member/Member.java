@@ -10,4 +10,5 @@ public class Member {
     private String userPw;
     private String userNm;
     private LocalDateTime regDt;
+    private String regDtStr;
 }
