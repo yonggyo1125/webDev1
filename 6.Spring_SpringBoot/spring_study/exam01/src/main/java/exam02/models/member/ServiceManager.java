@@ -1,6 +1,19 @@
 package exam02.models.member;
 
 public class ServiceManager {
+
+    private static ServiceManager instance;
+
+    private ServiceManager() {}
+
+    public ServiceManager getInstance() {
+        if (instance == null) {
+            instance = new ServiceManager();
+        }
+
+        return instance;
+    }
+
     public MemberDao memberDao() {
         return new MemberDao();
     }
