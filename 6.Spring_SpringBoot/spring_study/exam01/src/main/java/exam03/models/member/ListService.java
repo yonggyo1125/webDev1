@@ -1,6 +1,7 @@
 package exam03.models.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -8,10 +9,11 @@ import java.util.List;
 public class ListService {
 
     private MemberDao memberDao;
-    private DateTimeFormatter formatter;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy.MM.dd");
 
+    //@Autowired(required = false)
     @Autowired
-    public void setFormatter(DateTimeFormatter formatter) {
+    public void setFormatter(@Nullable DateTimeFormatter formatter) {
         this.formatter = formatter;
     }
 
@@ -27,7 +29,9 @@ public class ListService {
     }
 
     private Member toConvert(Member member) {
-        member.setRegDtStr(formatter.format(member.getRegDt()));
+        if (formatter != null) {
+            member.setRegDtStr(formatter.format(member.getRegDt()));
+        }
 
         return member;
     }

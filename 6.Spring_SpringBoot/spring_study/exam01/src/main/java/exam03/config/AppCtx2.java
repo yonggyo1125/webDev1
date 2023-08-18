@@ -22,7 +22,7 @@ public class AppCtx2 {
         return new ListService();
     }
 
-    @Bean
+   // @Bean
     public DateTimeFormatter dateTimeFormatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
 
