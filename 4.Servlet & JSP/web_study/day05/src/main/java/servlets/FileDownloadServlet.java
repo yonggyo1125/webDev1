@@ -18,8 +18,9 @@ public class FileDownloadServlet extends HttpServlet {
         File file = new File("D:/uploads/abc.txt");
         try (FileInputStream fis = new FileInputStream(file);
             BufferedInputStream bis = new BufferedInputStream(fis)) {
-
-            resp.setHeader("Content-Disposition", "attachment; filename=abc.txt");
+            String fileName = "한글 파일명.txt";
+            fileName = new String(fileName.getBytes("UTF-8"), "ISO8859_1");
+            resp.setHeader("Content-Disposition", "attachment; filename=" + fileName);
             resp.setHeader("Content-Type", "application/octet-stream");
             resp.setIntHeader("Expires", 0); // 파일 용량이 큰 경우 만료 X
             resp.setHeader("Cache-Control", "must-revalidate");

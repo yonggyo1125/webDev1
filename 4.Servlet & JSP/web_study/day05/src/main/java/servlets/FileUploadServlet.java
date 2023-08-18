@@ -12,6 +12,8 @@ import org.apache.commons.fileupload2.core.FileItemFactory;
 import org.apache.commons.fileupload2.jakarta.JakartaServletDiskFileUpload;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.util.List;
 
 @WebServlet("/file/upload")
@@ -23,13 +25,18 @@ public class FileUploadServlet extends HttpServlet {
         // parseRequest(...) : 요청 데이터 중에서 multipart를 양식과 파일 데이터
 
         List<DiskFileItem> items = upload.parseRequest(req);
-        for (FileItem item : items) {
+        for (DiskFileItem item : items) {
             String name = item.getFieldName();
             if (item.isFormField()) { // 일반 양식 데이터
-                String value = item.getString();
+                String value = item.getString(Charset.forName("UTF-8"));
                 System.out.printf("일반 양식: %s, %s%n", name, value);
             } else { // 파일 데이터
                 System.out.printf("파일 : %s%n", name);
+                String fileName = item.getName();
+                String contentType = item.getContentType();
+                Path path = Path.of("D:/uploads/" + fileName);
+                item.write(path);
+                System.out.printf("fileName : %s, contentType : %s%n", fileName, contentType);
             }
         }
 
