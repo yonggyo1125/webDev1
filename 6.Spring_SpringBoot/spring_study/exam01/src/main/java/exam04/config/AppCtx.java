@@ -8,8 +8,11 @@ import exam04.models.member.*;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
+/*
 @ComponentScan(basePackages = "exam04.models",
-    excludeFilters = @ComponentScan.Filter(type= FilterType.ANNOTATION, classes= ManualBean.class))
+    excludeFilters = @ComponentScan.Filter(type= FilterType.ANNOTATION, classes= ManualBean.class)) */
+@ComponentScan(basePackages = "exam04.models",
+    excludeFilters = @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, classes=MemberDao.class))
 public class AppCtx {
     /**
     @Bean

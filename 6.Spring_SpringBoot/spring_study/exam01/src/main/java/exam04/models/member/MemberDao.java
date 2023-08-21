@@ -1,5 +1,6 @@
 package exam04.models.member;
 
+import exam04.config.ManualBean;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
+@ManualBean
 public class MemberDao { // memberDao
     private static Map<String, Member> members = new HashMap<>();
 
