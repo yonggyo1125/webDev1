@@ -14,6 +14,7 @@ public class AppCtx2 {
 
     @Bean
     public JoinService joinService() {
+
         return new JoinService();
     }
 
