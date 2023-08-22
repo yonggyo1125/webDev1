@@ -9,7 +9,17 @@ public class Ex01 {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 
         Calculator cal = ctx.getBean(Calculator.class);
+       //Calculator cal = ctx.getBean(RecCalculator.class);
+
         long result = cal.factorial(10);
+        System.out.println(result);
+        result = cal.factorial(10);
+        System.out.println(result);
+        result = cal.factorial(10);
+        System.out.println(result);
+        result = cal.factorial(10);
+        System.out.println(result);
+        result = cal.factorial(10);
         System.out.println(result);
 
         ctx.close();
