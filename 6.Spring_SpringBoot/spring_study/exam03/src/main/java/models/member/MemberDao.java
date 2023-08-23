@@ -46,13 +46,26 @@ public class MemberDao {
 
     public Member get(String userId) {
         String sql = "SELECT * FROM member WHERE userId = ?";
-        Member member = jdbcTemplate.queryForObject(sql, new RowMapper<Member>() {
-            @Override
-            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
-                return null;
-            }
+        Member member = jdbcTemplate.queryForObject(sql, (rs, i)->{
+                return Member.builder()
+                        .userNo(rs.getLong("userNo"))
+                        .userId(rs.getString("userId"))
+                        .userPw(rs.getString("userPw"))
+                        .userNm(rs.getString("userNm"))
+                        .regDt(rs.getTimestamp("regDt").toLocalDateTime())
+                        .build();
         }, userId);
 
         return member;
+    }
+
+    private Member mapper(ResultSet rs, int i) throws SQLException {
+        return Member.builder()
+                .userNo(rs.getLong("userNo"))
+                .userId(rs.getString("userId"))
+                .userPw(rs.getString("userPw"))
+                .userNm(rs.getString("userNm"))
+                .regDt(rs.getTimestamp("regDt").toLocalDateTime())
+                .build();
     }
 }
