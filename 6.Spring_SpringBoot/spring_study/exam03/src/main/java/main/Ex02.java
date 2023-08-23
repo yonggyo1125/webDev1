@@ -14,6 +14,14 @@ public class Ex02 {
 
         List<Member> members = memberDao.getList();
         members.stream().forEach(System.out::println);
+
+        System.out.println("============== 개별 조회 ===============");
+        Member member = memberDao.get("user06");
+        System.out.println(member);
+
+        long total = memberDao.getTotal();
+        System.out.println("전체 회원 수 : " + total);
+
         ctx.close();
     }
 }
