@@ -1,6 +1,7 @@
 package models.member;
 
 import lombok.RequiredArgsConstructor;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +13,10 @@ public class MemberDao {
 
 
     public boolean register(Member member) {
+        String hash = BCrypt.hashpw(member.getUserPw(), BCrypt.gensalt(12));
+
         String sql = "INSERT INTO member (userId, userPw, userNm) VALUES (?,?,?)";
-        int affectedRows = jdbcTemplate.update(sql, member.getUserId(), member.getUserPw(), member.getUserNm());
+        int affectedRows = jdbcTemplate.update(sql, member.getUserId(), hash, member.getUserNm());
 
         return affectedRows > 0;
     }
