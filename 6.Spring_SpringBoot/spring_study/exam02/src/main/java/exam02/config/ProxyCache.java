@@ -16,7 +16,7 @@ public class ProxyCache {
 
     private Map<Long, Object> cache = new HashMap<>();
 
-    @Around("exam02.CommonPointcut.publicTarget()")
+    @Around("exam02.aopex.CommonPointcut.publicTarget()")
     //@Around("execution(* exam02.aopex..*(..))")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();

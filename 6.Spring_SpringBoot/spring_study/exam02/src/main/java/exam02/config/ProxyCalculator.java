@@ -10,7 +10,7 @@ import org.springframework.core.annotation.Order;
 @Aspect
 public class ProxyCalculator {
 
-    @Around("exam02.CommonPointcut.publicTarget()")
+    @Around("exam02.aopex.CommonPointcut.publicTarget()")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
         long stime = System.nanoTime(); // 추가 공통 기능
         try {
