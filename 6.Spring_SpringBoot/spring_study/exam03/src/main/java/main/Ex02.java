@@ -13,7 +13,7 @@ public class Ex02 {
         MemberDao memberDao = ctx.getBean(MemberDao.class);
 
         List<Member> members = memberDao.getList();
-
+        members.stream().forEach(System.out::println);
         ctx.close();
     }
 }

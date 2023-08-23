@@ -33,6 +33,7 @@ public class MemberDao {
         List<Member> members = jdbcTemplate.query(sql, (rs, i) -> {
 
                 return Member.builder()
+                        .userNo(rs.getLong("userNo"))
                         .userId(rs.getString("userId"))
                         .userPw(rs.getString("userPw"))
                         .userNm(rs.getString("userNm"))
@@ -41,5 +42,17 @@ public class MemberDao {
         });
 
         return members;
+    }
+
+    public Member get(String userId) {
+        String sql = "SELECT * FROM member WHERE userId = ?";
+        Member member = jdbcTemplate.queryForObject(sql, new RowMapper<Member>() {
+            @Override
+            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return null;
+            }
+        }, userId);
+
+        return member;
     }
 }
