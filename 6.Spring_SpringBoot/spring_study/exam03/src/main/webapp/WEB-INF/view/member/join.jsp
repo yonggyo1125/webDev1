@@ -36,7 +36,7 @@
     <dl>
         <dt>휴대전화번호</dt>
         <dd>
-            <input type="text" name="mobile" value="${joinForm.email}">
+            <input type="text" name="mobile" value="${joinForm.mobile}">
         </dd>
     </dl>
     <dl>
@@ -53,6 +53,14 @@
 
             <input type="checkbox" name="hobby" value="취미4" id="hobby4">
             <label for="hobby4">취미4</label>
+        </dd>
+    </dl>
+    <dl>
+        <dt>주소</dt>
+        <dd>
+            <input type="text" name="address.zip" value="${joinForm.address.zip}">
+            <input type="text" name="address.addr1" value="${joinForm.address.addr1}">
+            <input type="text" name="address.addr2" value="${joinForm.address.addr2}">
         </dd>
     </dl>
     <div>
