@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.*;
 public class MemberJoinController {
     @GetMapping // /member/join
     //@RequestMapping(method = RequestMethod.GET, path="/member/join")
-    public String join() {
+    public String join(Model model) {
+        model.addAttribute("joinForm", new JoinForm());
 
-        return "member/join";
+        return "member/join2";
     }
 
     @PostMapping
