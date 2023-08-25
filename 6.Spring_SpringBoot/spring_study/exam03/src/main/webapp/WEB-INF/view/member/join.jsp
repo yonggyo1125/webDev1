@@ -42,7 +42,17 @@
     <dl>
         <dt>취미</dt>
         <dd>
-            <input type="checkbox" name="hobby">
+            <input type="checkbox" name="hobby" value="취미1" id="hobby1">
+            <label for="hobby1">취미1</label>
+
+            <input type="checkbox" name="hobby" value="취미2" id="hobby2">
+            <label for="hobby2">취미2</label>
+
+            <input type="checkbox" name="hobby" value="취미3" id="hobby3">
+            <label for="hobby3">취미3</label>
+
+            <input type="checkbox" name="hobby" value="취미4" id="hobby4">
+            <label for="hobby4">취미4</label>
         </dd>
     </dl>
     <div>
