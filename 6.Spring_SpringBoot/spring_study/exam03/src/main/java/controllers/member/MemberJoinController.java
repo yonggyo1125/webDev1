@@ -17,7 +17,7 @@ public class MemberJoinController {
     @PostMapping
     public String joinPs(JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
         //model.addAttribute("joinForm", joinForm);
-
+        System.out.println(form);
         return "member/join";
     }
 
