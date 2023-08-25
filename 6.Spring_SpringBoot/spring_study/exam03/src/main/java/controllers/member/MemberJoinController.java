@@ -36,7 +36,7 @@ public class MemberJoinController {
         List<Item> types = getMemberTypes();
         model.addAttribute("types", types);
 
-        return "member/join2";
+        return "redirect:/member/login";
     }
 
     private List<Item> getMemberTypes() {
