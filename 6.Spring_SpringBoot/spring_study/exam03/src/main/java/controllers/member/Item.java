@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class Item {
     private String label;
-    private String value;
+    private String _value;
 }

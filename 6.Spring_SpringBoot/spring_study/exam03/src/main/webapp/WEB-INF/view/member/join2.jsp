@@ -42,7 +42,7 @@
     <dl>
         <dt>취미</dt>
         <dd>
-            <form:checkboxes path="hobby" items="${hobbies}" />
+            <form:checkboxes path="hobby" items="${hobbies}" itemLabel="label" itemValue="_value" />
         </dd>
     </dl>
     <div>

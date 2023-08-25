@@ -18,6 +18,9 @@ public class MemberJoinController {
         List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
 
+        List<Item> types = getMemberTypes();
+        model.addAttribute("types", types);
+
         return "member/join2";
     }
 
@@ -29,7 +32,19 @@ public class MemberJoinController {
         List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
 
+        List<Item> types = getMemberTypes();
+        model.addAttribute("types", types);
+
         return "member/join2";
+    }
+
+    private List<Item> getMemberTypes() {
+        List<Item> types = Arrays.asList(
+                new Item("개인회원", "private"),
+                new Item("사업자회원", "company")
+        );
+
+        return types;
     }
 
     private List<Item> getHobbies() {
