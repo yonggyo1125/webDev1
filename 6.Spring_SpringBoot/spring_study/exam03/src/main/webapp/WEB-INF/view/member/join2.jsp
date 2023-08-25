@@ -39,6 +39,12 @@
             <form:input path="mobile" />
         </dd>
     </dl>
+    <dl>
+        <dt>취미</dt>
+        <dd>
+            <form:checkboxes path="hobby" items="${hobbies}" />
+        </dd>
+    </dl>
     <div>
         <form:checkbox path="agree" value="true" label="회원가입약관에 동의 합니다." />
     </div>

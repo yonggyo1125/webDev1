@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 @RequestMapping("/member/join")
 public class MemberJoinController {
@@ -12,14 +15,27 @@ public class MemberJoinController {
     public String join(Model model) {
         model.addAttribute("joinForm", new JoinForm());
 
+        List<String> hobbies = getHobbies();
+        model.addAttribute("hobbies", hobbies);
+
         return "member/join2";
     }
 
     @PostMapping
     public String joinPs(JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
         //model.addAttribute("joinForm", joinForm);
-        System.out.println(form);
+        //System.out.println(form);
+
+        List<String> hobbies = getHobbies();
+        model.addAttribute("hobbies", hobbies);
+
         return "member/join2";
+    }
+
+    private List<String> getHobbies() {
+        List<String> hobbies = Arrays.asList("자바", "JSP", "스프링", "스프링부트");
+
+        return hobbies;
     }
 
     /*
