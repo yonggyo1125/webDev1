@@ -15,7 +15,7 @@ public class MemberJoinController {
     public String join(Model model) {
         model.addAttribute("joinForm", new JoinForm());
 
-        List<String> hobbies = getHobbies();
+        List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
 
         return "member/join2";
@@ -26,18 +26,30 @@ public class MemberJoinController {
         //model.addAttribute("joinForm", joinForm);
         //System.out.println(form);
 
-        List<String> hobbies = getHobbies();
+        List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
 
         return "member/join2";
     }
 
+    private List<Item> getHobbies() {
+        List<Item> hobbies = Arrays.asList(
+                new Item("자바", "JAVA"),
+                new Item("JSP", "JSP"),
+                new Item("스프링", "SPRING"),
+                new Item("스프링부트", "SPRINGBOOT")
+        );
+
+        return hobbies;
+    }
+
+    /*
     private List<String> getHobbies() {
         List<String> hobbies = Arrays.asList("자바", "JSP", "스프링", "스프링부트");
 
         return hobbies;
     }
-
+    */
     /*
     @PostMapping // /member/join
     public String joinPs(@RequestParam(name="userId", required = false, defaultValue="없는 아이디") String memId, String userPw, boolean agree) {
