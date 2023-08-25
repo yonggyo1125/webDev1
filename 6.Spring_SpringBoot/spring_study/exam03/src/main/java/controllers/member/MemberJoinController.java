@@ -18,7 +18,7 @@ public class MemberJoinController {
     public String joinPs(JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
         //model.addAttribute("joinForm", joinForm);
         System.out.println(form);
-        return "member/join";
+        return "member/join2";
     }
 
     /*
