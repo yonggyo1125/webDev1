@@ -4,6 +4,12 @@
 <c:url var="action" value="/member/join" />
 <form:form method="POST" action="${action}" modelAttribute="joinForm">
     <dl>
+        <dt>가입유형</dt>
+        <dd>
+            <form:radiobuttons path="type" items="${types}" itemLabel="label" itemValue="_value" />
+        </dd>
+    </dl>
+    <dl>
         <dt>아이디</dt>
         <dd>
             <form:input path="userId" />

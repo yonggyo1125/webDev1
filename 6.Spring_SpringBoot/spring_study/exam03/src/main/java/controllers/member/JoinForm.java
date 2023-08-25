@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class JoinForm {
-    private String type;
+    private String type = "private";
     private String userId;
     private String userPw;
     private String userPwRe;
