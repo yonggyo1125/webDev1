@@ -30,6 +30,8 @@ public class MemberJoinController {
     public String joinPs(JoinForm form, Errors errors, Model model) {
         commonProcess(model);
 
+        joinValidator.validate(form, errors);
+
         if (errors.hasErrors()) { // reject, rejectValue -> true
             return "member/join2";
         }
