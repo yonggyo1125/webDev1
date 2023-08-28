@@ -36,6 +36,7 @@
         </dt>
         <dd>
             <form:password path="userPw" />
+            <form:errors path="userPw" element="div" />
         </dd>
     </dl>
     <dl>
@@ -44,6 +45,7 @@
         </dt>
         <dd>
             <form:password path="userPwRe" />
+            <form:errors path="userPwRe" element="div" />
         </dd>
     </dl>
     <dl>
@@ -52,6 +54,7 @@
         </dt>
         <dd>
             <form:input path="userNm" />
+            <form:errors path="userNm" element="div" />
         </dd>
     </dl>
     <dl>
