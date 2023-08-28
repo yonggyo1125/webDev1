@@ -29,7 +29,7 @@ public class MemberJoinController {
     @PostMapping
     public String joinPs(@Valid JoinForm form, Errors errors, Model model) {
 
-        //joinValidator.validate(form, errors);
+        joinValidator.validate(form, errors);
 
         if (errors.hasErrors()) { // reject, rejectValue -> true
             return "member/join2";
