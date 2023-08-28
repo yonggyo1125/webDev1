@@ -17,14 +17,9 @@ public class JoinValidator implements Validator {
         JoinForm joinForm = (JoinForm)target;
 
         /**
-         * 1. 필수 항목 검증 (userId, userPw, userPwRe, userNm), null, "   "
-         *
-         */
-        /*
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPw", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPwRe", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userNm", "required");
+         * 1. 아이디 중복 여부 체크
+         * 2. 비번(userPw)과 비번 확인(userPwRe) 일치 여부
+         * 3. 휴대전화번호(필수 X) -> 입력된 경우는 형식 체크
          */
     }
 }

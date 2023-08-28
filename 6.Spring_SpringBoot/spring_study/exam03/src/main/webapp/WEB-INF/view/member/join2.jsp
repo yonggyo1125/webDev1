@@ -27,7 +27,7 @@
         </dt>
         <dd>
             <form:input path="userId" cssErrorClass="error" />
-            <form:errors path="userId" element="div" />
+            <form:errors path="userId" element="div" delimiter="<p>*****</p>"/>
         </dd>
     </dl>
     <dl>
