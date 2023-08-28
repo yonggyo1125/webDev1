@@ -73,22 +73,6 @@
             <form:input path="mobile" />
         </dd>
     </dl>
-    <dl>
-        <dt>
-            <spring:message code="member.hobby" />
-        </dt>
-        <dd>
-            <form:checkboxes path="hobby" items="${hobbies}" itemLabel="label" itemValue="_value" />
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <spring:message code="member.intro" />
-        </dt>
-        <dd>
-            <form:textarea path="intro" rows="10" cols="40" />
-        </dd>
-    </dl>
     <div>
         <form:checkbox path="agree" value="true" label="${agree}" />
     </div>

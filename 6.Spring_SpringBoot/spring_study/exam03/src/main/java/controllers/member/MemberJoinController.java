@@ -22,15 +22,12 @@ public class MemberJoinController {
     @GetMapping
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
 
-       commonProcess(model);
-
 
         return "member/join2";
     }
 
     @PostMapping
     public String joinPs(@Valid JoinForm form, Errors errors, Model model) {
-        commonProcess(model);
 
         //joinValidator.validate(form, errors);
 

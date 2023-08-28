@@ -22,7 +22,5 @@ public class JoinForm {
     private String userNm;
     private String email;
     private String mobile;
-    private List<String> hobby;
-    private String intro;
     private boolean agree;
 }
