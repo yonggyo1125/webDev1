@@ -11,9 +11,7 @@ import java.util.List;
 @RequestMapping("/member/join")
 public class MemberJoinController {
     @GetMapping // /member/join
-    //@RequestMapping(method = RequestMethod.GET, path="/member/join")
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
-        //model.addAttribute("joinForm", new JoinForm());
 
         List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
