@@ -1,10 +1,12 @@
 package controllers.member;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -27,10 +29,10 @@ public class MemberJoinController {
     }
 
     @PostMapping
-    public String joinPs(JoinForm form, Errors errors, Model model) {
+    public String joinPs(@Valid JoinForm form, Errors errors, Model model) {
         commonProcess(model);
 
-        joinValidator.validate(form, errors);
+        //joinValidator.validate(form, errors);
 
         if (errors.hasErrors()) { // reject, rejectValue -> true
             return "member/join2";
@@ -69,20 +71,10 @@ public class MemberJoinController {
     }
 
     /*
-    private List<String> getHobbies() {
-        List<String> hobbies = Arrays.asList("자바", "JSP", "스프링", "스프링부트");
-
-        return hobbies;
+    @InitBinder
+    public void InitBinder(WebDataBinder binder) {
+        binder.setValidator(joinValidator);
     }
-    */
-    /*
-    @PostMapping // /member/join
-    public String joinPs(@RequestParam(name="userId", required = false, defaultValue="없는 아이디") String memId, String userPw, boolean agree) {
-       System.out.printf("userId=%s, userPw=%s, agree=%s%n", memId, userPw, agree);
-
-
-        return null;
-    }
-
      */
+
 }

@@ -20,9 +20,11 @@ public class JoinValidator implements Validator {
          * 1. 필수 항목 검증 (userId, userPw, userPwRe, userNm), null, "   "
          *
          */
+        /*
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPw", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPwRe", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userNm", "required");
+         */
     }
 }

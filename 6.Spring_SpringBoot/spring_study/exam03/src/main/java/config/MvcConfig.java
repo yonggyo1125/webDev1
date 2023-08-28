@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
-
+    /*
     @Autowired
     private JoinValidator joinValidator;
 
@@ -20,6 +20,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public Validator getValidator() {
         return joinValidator;
     }
+    */
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
