@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -75,6 +76,13 @@ public class MemberDao {
         String sql = "SELECT COUNT(*) FROM member";
         long total = jdbcTemplate.queryForObject(sql, long.class);
         return total;
+    }
+
+    public boolean exists(String userId) {
+        String sql = "SELECT COUNT(*) FROM member WHERE userId = ?";
+        int cnt = jdbcTemplate.queryForObject(sql, int.class, userId);
+
+        return cnt > 0;
     }
 
     private Member mapper(ResultSet rs, int i) throws SQLException {
