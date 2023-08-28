@@ -26,7 +26,7 @@
             <spring:message code="member.userId" />
         </dt>
         <dd>
-            <form:input path="userId" cssClass="on" cssStyle="border: 1px solid red;" />
+            <form:input path="userId" cssErrorClass="error" />
             <form:errors path="userId" element="div" />
         </dd>
     </dl>
