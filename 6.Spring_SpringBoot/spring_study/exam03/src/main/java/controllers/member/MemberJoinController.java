@@ -1,5 +1,7 @@
 package controllers.member;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,32 +11,35 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/member/join")
+@RequiredArgsConstructor
 public class MemberJoinController {
-    @GetMapping // /member/join
+
+    private final JoinValidator joinValidator;
+
+    @GetMapping
     public String join(@ModelAttribute JoinForm joinForm, Model model) {
 
-        List<Item> hobbies = getHobbies();
-        model.addAttribute("hobbies", hobbies);
+       commonProcess(model);
 
-        List<Item> types = getMemberTypes();
-        model.addAttribute("types", types);
 
         return "member/join2";
     }
 
     @PostMapping
-    public String joinPs(/*@ModelAttribute("command") */ JoinForm form, Model model) { // JoinForm -> joinForm : EL 속성 추가
+    public String joinPs(JoinForm form, Model model) {
 
-        //model.addAttribute("joinForm", joinForm);
-        //System.out.println(form);
+        commonProcess(model);
 
+
+        return "redirect:/member/login";
+    }
+
+    private void commonProcess(Model model) {
         List<Item> hobbies = getHobbies();
         model.addAttribute("hobbies", hobbies);
 
         List<Item> types = getMemberTypes();
         model.addAttribute("types", types);
-
-        return "redirect:/member/login";
     }
 
     private List<Item> getMemberTypes() {
