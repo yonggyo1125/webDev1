@@ -16,7 +16,7 @@ public class JoinValidator implements Validator {
         JoinForm joinForm = (JoinForm)target;
 
         /**
-         * 1. 필수 항목 검증 (userId, userPw, userPwRe, userNm)
+         * 1. 필수 항목 검증 (userId, userPw, userPwRe, userNm), null, "   "
          *
          */
         String userId = joinForm.getUserId();
@@ -24,5 +24,8 @@ public class JoinValidator implements Validator {
         String userPwRe = joinForm.getUserPwRe();
         String userNm = joinForm.getUserNm();
 
+        if (userId == null || userId.isBlank()) {
+            errors.rejectValue("userId", "required", "아이디를 입력하세요.");
+        }
     }
 }
