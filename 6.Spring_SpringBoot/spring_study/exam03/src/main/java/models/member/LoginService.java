@@ -17,5 +17,7 @@ public class LoginService {
          * 1. 회원정보 조회
          * 2. 세션에 데이터 유지
          */
+        Member member = memberDao.get(form.getUserId());
+        session.setAttribute("member", member);
     }
 }
