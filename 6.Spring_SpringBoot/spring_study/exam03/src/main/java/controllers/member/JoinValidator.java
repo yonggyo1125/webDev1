@@ -30,10 +30,18 @@ public class JoinValidator implements Validator {
          */
 
         String userId = joinForm.getUserId();
+        String userPw = joinForm.getUserPw();
+        String userPwRe = joinForm.getUserPwRe();
 
          // 1. 아이디 중복 여부 체크
         if (memberDao.exists(userId)) {
-            errors.rejectValue("userId", "");
+            errors.rejectValue("userId", "duplicate");
+        }
+
+        // 2. 비번(userPw)과 비번 확인(userPwRe) 일치 여부
+        if (userPw != null && !userPw.isBlank() && userPwRe != null && !userPwRe.isBlank()
+            && !userPw.equals(userPwRe)) {
+            errors.rejectValue("userPwRe", "mismatch");
         }
     }
 }
