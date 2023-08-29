@@ -37,6 +37,7 @@ public class MemberJoinController {
             return "member/join2";
         }
 
+        joinService.join(form);
 
         return "redirect:/member/login";
     }
