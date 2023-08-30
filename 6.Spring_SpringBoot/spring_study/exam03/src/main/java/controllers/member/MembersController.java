@@ -3,10 +3,7 @@ package controllers.member;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/members")
@@ -17,10 +14,19 @@ public class MembersController {
         return "member/list";
     }
 
-    @GetMapping("/info/{userId}")
-    public String info(@PathVariable String userId) {
+    @GetMapping("/info/{id}")
+    public String info(@PathVariable("id") String userId) {
         System.out.println("userId : " + userId);
 
+        boolean result = false;
+        if (!result) {
+            throw new RuntimeException("예외 발생.....!!!");
+        }
         return "member/info";
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public String errorHandler() {
+        return "error/common";
     }
 }
