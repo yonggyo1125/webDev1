@@ -4,6 +4,8 @@
 
 <form:form method="GET" modelAttribute="searchForm">
     시작일 : <form:input path="sDate" /> ~
+            <form:errors path="sDate" />
     종료일 : <form:input path="eDate" />
+            <form:errors path="eDate" />
     <button type="submit">조회하기</button>
 </form:form>
