@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MembersController {
     @GetMapping
     public String list(@ModelAttribute SearchForm form) {
-
+        System.out.println(form);
         return "member/list";
     }
 }
