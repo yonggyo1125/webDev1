@@ -24,7 +24,7 @@
         </init-param>
         <init-param>
             <param-name>spring.profiles.active</param-name>
-            <param-value>dev</param-value>
+            <param-value>real</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
         <multipart-config>
