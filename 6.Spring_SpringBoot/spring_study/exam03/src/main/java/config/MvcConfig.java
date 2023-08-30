@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 @EnableWebMvc
-@Import(DbConfig.class)
+@Import(DbConfig2.class)
 public class MvcConfig implements WebMvcConfigurer {
     /*
     @Autowired
