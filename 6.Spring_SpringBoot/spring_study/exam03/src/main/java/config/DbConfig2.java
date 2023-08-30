@@ -16,6 +16,8 @@ public class DbConfig2 {
     static class DevDbConfig {
         @Bean(destroyMethod = "close")
         public DataSource dataSource() {
+            System.out.println("dev profile!!!");
+
             DataSource ds = new DataSource();
             ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
             ds.setUrl("jdbc:mysql://localhost:3306/spring6");
@@ -45,6 +47,8 @@ public class DbConfig2 {
     static class RealDbConfig {
         @Bean(destroyMethod = "close")
         public DataSource dataSource() {
+            System.out.println("real profile!!!");
+
             DataSource ds = new DataSource();
             ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
             ds.setUrl("jdbc:mysql://localhost:3306/spring6");
