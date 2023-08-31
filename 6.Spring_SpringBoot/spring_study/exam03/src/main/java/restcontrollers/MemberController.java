@@ -3,6 +3,7 @@ package restcontrollers;
 import controllers.member.JoinForm;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import models.member.DuplicateMemberException;
 import models.member.JoinService;
 import models.member.Member;
 import models.member.MemberDao;
@@ -70,8 +71,13 @@ public class MemberController {
             return ResponseEntity.badRequest().body(messages);
         }
 
-        joinService.join(form);
 
-        return ResponseEntity.created(URI.create("/member/login")).build();
+        try {
+            joinService.join(form);
+
+            return ResponseEntity.created(URI.create("/member/login")).build();
+        } catch (DuplicateMemberException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
