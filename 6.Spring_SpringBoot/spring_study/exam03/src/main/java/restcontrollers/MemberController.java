@@ -44,6 +44,7 @@ public class MemberController {
 
     @PostMapping("/register")
     public void register(@RequestBody JoinForm form) {
-        System.out.println(form);
+
+        joinService.join(form);
     }
 }
