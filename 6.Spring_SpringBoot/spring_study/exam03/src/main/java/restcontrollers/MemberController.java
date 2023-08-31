@@ -1,6 +1,7 @@
 package restcontrollers;
 
 import controllers.member.JoinForm;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import models.member.DuplicateMemberException;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/member")
@@ -62,22 +64,28 @@ public class MemberController {
     }
     */
     @PostMapping("/register")
-    public ResponseEntity<Object> register(@RequestBody @Valid JoinForm form, Errors errors) {
-
+    public ResponseEntity<Object> register(@RequestBody @Valid JoinForm form, Errors errors, HttpServletResponse response) {
         if (errors.hasErrors()) {
-            List<String> messages = errors.getAllErrors()
-                        .stream().map(o -> o.getDefaultMessage()).toList();
+            String messages = errors.getAllErrors()
+                        .stream().map(o -> o.getDefaultMessage())
+                    .collect(Collectors.joining(","));
 
-            return ResponseEntity.badRequest().body(messages);
+            throw new RuntimeException(messages);
         }
 
 
-        try {
-            joinService.join(form);
 
-            return ResponseEntity.created(URI.create("/member/login")).build();
-        } catch (DuplicateMemberException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+        joinService.join(form);
+
+        return ResponseEntity.created(URI.create("/member/login")).build();
+
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> errorHandler(Exception e) {
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(new String[] {e.getMessage()});
     }
 }
