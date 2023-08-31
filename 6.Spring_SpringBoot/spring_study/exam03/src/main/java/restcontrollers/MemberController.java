@@ -1,14 +1,17 @@
 package restcontrollers;
 
 import controllers.member.JoinForm;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import models.member.JoinService;
 import models.member.Member;
 import models.member.MemberDao;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -19,10 +22,10 @@ public class MemberController {
     private final JoinService joinService;
 
     @GetMapping("/{id}")
-    public Member info(@PathVariable("id") String userId) {
+    public ResponseEntity<Member> info(@PathVariable("id") String userId) {
         Member member = memberDao.get(userId);
 
-        return member;
+        return ResponseEntity.ok(member);
     }
 
     @GetMapping("/list")
@@ -44,13 +47,30 @@ public class MemberController {
         System.out.println("Hello!!!!");
     }
 
+    /**
     @PostMapping("/register")
-    public ResponseEntity<JoinForm> register(@RequestBody JoinForm form) {
+    public ResponseEntity<Object> register(@RequestBody JoinForm form) {
 
         joinService.join(form);
 
         //return ResponseEntity.status(HttpStatus.CREATED).build();
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(form);
+        //return ResponseEntity.status(HttpStatus.CREATED).body(form);
+
+        return ResponseEntity.created(URI.create("/member/login")).build();
+    }
+    */
+    @PostMapping("/register")
+    public ResponseEntity<Object> register(@RequestBody @Valid JoinForm form, Errors errors) {
+
+        if (errors.hasErrors()) {
+            List<String> messages = errors.getAllErrors().stream().map(o -> o.getCode()).toList();
+
+            return ResponseEntity.badRequest().body(messages);
+        }
+
+        joinService.join(form);
+
+        return ResponseEntity.created(URI.create("/member/login")).build();
     }
 }
