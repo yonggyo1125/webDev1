@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import models.member.JoinService;
 import models.member.Member;
 import models.member.MemberDao;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,8 +45,12 @@ public class MemberController {
     }
 
     @PostMapping("/register")
-    public void register(@RequestBody JoinForm form) {
+    public ResponseEntity<JoinForm> register(@RequestBody JoinForm form) {
 
         joinService.join(form);
+
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(form);
     }
 }
