@@ -64,7 +64,8 @@ public class MemberController {
     public ResponseEntity<Object> register(@RequestBody @Valid JoinForm form, Errors errors) {
 
         if (errors.hasErrors()) {
-            List<String> messages = errors.getAllErrors().stream().map(o -> o.getCode()).toList();
+            List<String> messages = errors.getAllErrors()
+                        .stream().map(o -> o.getDefaultMessage()).toList();
 
             return ResponseEntity.badRequest().body(messages);
         }
