@@ -26,10 +26,12 @@ public class MemberController {
     private final JoinService joinService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Member> info(@PathVariable("id") String userId) {
+    public ResponseEntity<JSONData<Member>> info(@PathVariable("id") String userId) {
         Member member = memberDao.get(userId);
-
-        return ResponseEntity.ok(member);
+        JSONData<Member> data = new JSONData<>();
+        data.setSuccess(true);
+        data.setData(member);
+        return ResponseEntity.ok(data);
     }
 
     @GetMapping("/list")
@@ -82,20 +84,5 @@ public class MemberController {
 
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<JSONData<Object>> errorHandler(Exception e) {
 
-        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        if (e instanceof CommonException) {
-            CommonException commonException = (CommonException)e;
-            status = commonException.getStatus();
-        }
-
-       JSONData<Object> data = new JSONData<>();
-       data.setSuccess(false);
-       data.setMessage(e.getMessage());
-       data.setStatus(status);
-
-       return ResponseEntity.status(status).body(data);
-    }
 }
