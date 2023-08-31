@@ -1,12 +1,11 @@
 package restcontrollers;
 
+import controllers.member.JoinForm;
 import lombok.RequiredArgsConstructor;
+import models.member.JoinService;
 import models.member.Member;
 import models.member.MemberDao;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberDao memberDao;
+    private final JoinService joinService;
 
     @GetMapping("/{id}")
     public Member info(@PathVariable("id") String userId) {
@@ -40,5 +40,10 @@ public class MemberController {
     @GetMapping("/hello")
     public void hello() {
         System.out.println("Hello!!!!");
+    }
+
+    @PostMapping("/register")
+    public void register(@RequestBody JoinForm form) {
+        System.out.println(form);
     }
 }

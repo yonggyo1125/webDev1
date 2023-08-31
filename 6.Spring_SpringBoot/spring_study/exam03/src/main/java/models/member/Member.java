@@ -1,5 +1,6 @@
 package models.member;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -15,5 +16,7 @@ public class Member {
     private String userPw;
 
     private String userNm;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime regDt;
 }
