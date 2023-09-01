@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <body>
-        <section th:object="${member}">
+        <th:block th:object="${member}">
             <dl>
-                <dt th:text="#{member.userNo}"></dt>
+                <dt th:text="${#messages.msgOrNull('member.userNo')}"></dt>
                 <dd th:text="*{userNo}"></dd>
             </dl>
             <dl>
@@ -19,6 +19,6 @@
                 <dt th:text="#{member.regDt}"></dt>
                 <dd th:text="*{regDt}"></dd>
             </dl>
-        </section>
+        </th:block>
     </body>
 </html>
