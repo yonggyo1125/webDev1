@@ -32,7 +32,7 @@ public class TplConfig implements WebMvcConfigurer {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
-        templateEngine.addDialect(new Java8TimeDialect());
+        templateEngine.addDialect(new Java8TimeDialect()); // #temporals 식 객체
         templateEngine.addDialect(new LayoutDialect());
         return templateEngine;
     }
