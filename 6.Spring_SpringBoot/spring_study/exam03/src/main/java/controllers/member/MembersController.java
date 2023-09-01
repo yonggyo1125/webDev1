@@ -25,13 +25,16 @@ public class MembersController {
     }
 
     @GetMapping("/info/{id}")
-    public String info(@PathVariable("id") String userId) {
-        System.out.println("userId : " + userId);
+    public String info(@PathVariable("id") String userId, Model model) {
 
+        Member member = memberDao.get(userId);
+        model.addAttribute("member", member);
+        /**
         boolean result = false;
         if (!result) {
             throw new RuntimeException("★예외 발생.....!!!");
         }
+         */
         return "member/info";
     }
 
