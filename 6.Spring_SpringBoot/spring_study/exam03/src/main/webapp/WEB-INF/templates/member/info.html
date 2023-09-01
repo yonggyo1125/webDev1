@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <body>
-        <dl>
-            <dt>회원번호</dt>
-            <dd th:text="${member.userNo}"></dd>
-        </dl>
-        <dl>
-            <dt>아이디</dt>
-            <dd th:text="${member.userId}"></dd>
-        </dl>
-        <dl>
-            <dt>회원명</dt>
-            <dd th:text="${member.userNm}"></dd>
-        </dl>
+        <section th:object="${member}">
+            <dl>
+                <dt th:text="#{member.userNo}"></dt>
+                <dd th:text="*{userNo}"></dd>
+            </dl>
+            <dl>
+                <dt th:text="#{member.userId}"></dt>
+                <dd th:text="*{userId}"></dd>
+            </dl>
+            <dl>
+                <dt th:text="#{member.userNm}"></dt>
+                <dd th:text="*{userNm}"></dd>
+            </dl>
 
-        <dl>
-            <dt>가입일시</dt>
-            <dd th:text="${member.regDt}"></dd>
-        </dl>
+            <dl>
+                <dt th:text="#{member.regDt}"></dt>
+                <dd th:text="*{regDt}"></dd>
+            </dl>
+        </section>
     </body>
 </html>
