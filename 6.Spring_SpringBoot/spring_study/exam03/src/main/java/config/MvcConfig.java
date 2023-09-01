@@ -1,5 +1,6 @@
 package config;
 
+import commons.Utils;
 import config.interceptors.MemberOnlyInterceptor;
 import controllers.member.JoinValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,5 +92,10 @@ public class MvcConfig implements WebMvcConfigurer {
         conf.setLocations(new ClassPathResource("application.properties"));
 
         return conf;
+    }
+
+    @Bean
+    public Utils utils() {
+        return new Utils();
     }
 }

@@ -8,7 +8,7 @@
             </dl>
             <dl>
                 <dt th:text="#{member.userId}"></dt>
-                <dd th:text="*{userId}"></dd>
+                <dd th:text="*{#strings.concat(userId, '(', userNm, ')')}"></dd>
             </dl>
             <dl>
                 <dt th:text="#{member.userNm}"></dt>
@@ -17,7 +17,7 @@
 
             <dl>
                 <dt th:text="#{member.regDt}"></dt>
-                <dd th:text="*{regDt}"></dd>
+                <dd th:text="*{#temporals.format(regDt, 'yyyy.MM.dd HH:mm')}"></dd>
             </dl>
         </th:block>
     </body>
