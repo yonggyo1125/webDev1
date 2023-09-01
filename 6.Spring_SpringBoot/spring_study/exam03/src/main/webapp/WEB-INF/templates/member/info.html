@@ -2,13 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <body>
         <th:block th:object="${member}">
+            [[${member.userNo}]] / [[*{userNo}]]
             <dl>
                 <dt th:text="${#messages.msgOrNull('member.userNo')}"></dt>
                 <dd th:text="*{userNo}"></dd>
             </dl>
             <dl>
                 <dt th:text="#{member.userId}"></dt>
-                <dd th:text="*{#strings.concat(userId, '(', userNm, ')')}"></dd>
+                <!--<dd th:text="*{#strings.concat(userId, '(', userNm, ')')}"></dd>-->
+                <dd th:text="*{@utils.toUpper(userId)}"></dd>
             </dl>
             <dl>
                 <dt th:text="#{member.userNm}"></dt>
