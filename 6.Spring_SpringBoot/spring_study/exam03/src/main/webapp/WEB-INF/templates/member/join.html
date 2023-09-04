@@ -7,47 +7,48 @@
     <body>
         <h1>회원가입</h1>
         <form method="post" th:action="@{/member/join}" th:object="${joinForm}">
+            [[${joinForm}]]
             <dl>
-                <dt>아이디</dt>
+                <dt th:text="#{member.userId}"></dt>
                 <dd>
-                    <input type="text" name="userId">
+                    <input type="text" name="userId" th:field="*{userId}">
                 </dd>
             </dl>
             <dl>
-                <dt>회원명</dt>
+                <dt th:text="#{member.userNm}"></dt>
                 <dd>
-                    <input type="text" name="userNm">
+                    <input type="text" name="userNm" th:field="*{userNm}">
                 </dd>
             </dl>
             <dl>
-                <dt>비밀번호</dt>
+                <dt th:text="#{member.userPw}"></dt>
                 <dd>
-                    <input type="password" name="userPw">
+                    <input type="password" name="userPw" th:field="*{userPw}">
                 </dd>
             </dl>
             <dl>
-                <dt>비밀번호 확인</dt>
+                <dt th:text="#{member.userPwRe}"></dt>
                 <dd>
-                    <input type="password" name="userPwRe">
+                    <input type="password" name="userPwRe" th:field="*{userPwRe}">
                 </dd>
             </dl>
             <dl>
-                <dt>이메일</dt>
+                <dt th:text="#{member.email}"></dt>
                 <dd>
-                    <input type="text" name="email">
+                    <input type="text" name="email" th:field="*{email}">
                 </dd>
             </dl>
             <dl>
-                <dt>휴대전화번호</dt>
+                <dt th:text="#{member.mobile}"></dt>
                 <dd>
-                    <input type="text" name="mobile">
+                    <input type="text" name="mobile" th:field="*{mobile}">
                 </dd>
             </dl>
             <div>
-                <input type="checkbox" name="agree" value="true" id="agree">
-                <label for="agree">회원가입 약관에 동의합니다.</label>
+                <input type="checkbox" name="agree" value="true" id="agree" th:field="*{agree}">
+                <label for="agree" th:text="#{member.agree}"></label>
             </div>
-            <button type="submit">가입하기</button>
+            <button type="submit" th:text="#{join}"></button>
         </form>
     </body>
 </html>
