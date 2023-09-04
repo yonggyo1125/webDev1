@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <body>
+        <div class="tabs">
+            <a href="#" class="tab" th:classappend="${menuCode == 'member'} ? 'on'">회원관리</a>
+        </div>
         <table border="1">
             <thead>
                 <tr>
