@@ -32,6 +32,8 @@ public class MemberJoinController {
         model.addAttribute("addCss", addCss);
         model.addAttribute("addScript", addScript);
 
+        model.addAttribute("pageTitle", "회원가입");
+
         return "member/join";
     }
 
