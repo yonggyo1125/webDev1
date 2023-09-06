@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.koreait.constants.Role;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,9 @@ public class Member {
     private String userNm;
     @Lob
     private String introduction;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @CreationTimestamp
     private LocalDateTime regDt;
