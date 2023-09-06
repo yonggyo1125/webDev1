@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="es_member")
 @Data @Builder
 @AllArgsConstructor @NoArgsConstructor
 public class Member {
-    @Id
+    @Id @GeneratedValue
     private Long userNo;
     private String userId;
     private String userPw;
