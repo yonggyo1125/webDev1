@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -18,5 +20,12 @@ public class Member {
     private String userId;
     private String userPw;
     private String userNm;
+    @Lob
+    private String introduction;
+
+    @CreationTimestamp
     private LocalDateTime regDt;
+
+    @UpdateTimestamp
+    private LocalDateTime modDt;
 }
