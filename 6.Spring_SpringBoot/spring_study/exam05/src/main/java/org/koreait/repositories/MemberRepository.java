@@ -37,4 +37,11 @@ public interface MemberRepository extends JpaRepository<Member, Long>, QuerydslP
         List<Member> members = (List<Member>)findAll(builder, Sort.by(desc("userId")));
         return members;
     }
+
+    default Member getMember(String userId) {
+        QMember member = QMember.member;
+        Member data = findOne(member.userId.eq(userId)).orElse(null);
+
+        return data;
+    }
 }
