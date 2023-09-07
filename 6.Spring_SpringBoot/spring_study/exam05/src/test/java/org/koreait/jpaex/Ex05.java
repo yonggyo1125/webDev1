@@ -64,4 +64,11 @@ public class Ex05 {
         Member member = data.getMember();
         System.out.println(member);
     }
+
+    @Test
+    void test2() {
+        Member member = memberRepository.findById(1L).orElse(null);
+        List<BoardData> items = member.getBoardDatas();
+        items.stream().forEach(System.out::println);
+    }
 }
