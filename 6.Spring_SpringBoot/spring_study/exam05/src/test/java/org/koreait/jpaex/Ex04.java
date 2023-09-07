@@ -89,4 +89,10 @@ public class Ex04 {
         List<Member> members = repository.findByUserNmContainingOrUserIdContainingOrderByUserIdDesc("용", "ser");
         members.stream().forEach(System.out::println);
     }
+
+    @Test
+    void test7() {
+        List<Member> members = repository.getList("용", "ser");
+        members.stream().forEach(System.out::println);
+    }
 }
