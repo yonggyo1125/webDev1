@@ -19,4 +19,8 @@ public class BoardData extends BaseEntity {
     @Lob
     @Column(nullable = false)
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name="userNo")
+    private Member member;
 }
