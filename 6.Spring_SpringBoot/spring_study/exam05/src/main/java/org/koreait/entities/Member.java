@@ -1,17 +1,14 @@
 package org.koreait.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.koreait.constants.Role;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="es_member")
+//@Table(name="es_member")
 @Data @Builder
 @AllArgsConstructor @NoArgsConstructor
 public class Member extends BaseEntity {
@@ -38,5 +35,6 @@ public class Member extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name="addressId")
+    @ToString.Exclude
     private Address address;
 }
