@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface BoardDataRepository extends JpaRepository<BoardData, Long>, QuerydslPredicateExecutor<BoardData> {
 
-    @Query("SELECT b FROM BoardData b LEFT JOIN b.member")
+    @Query("SELECT b FROM BoardData b LEFT JOIN FETCH b.member")
     List<BoardData> getList();
 }

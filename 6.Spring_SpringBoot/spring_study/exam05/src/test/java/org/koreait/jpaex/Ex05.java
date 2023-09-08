@@ -84,4 +84,14 @@ public class Ex05 {
             System.out.println(userId);
         }
     }
+
+    @Test
+    void test4() {
+        List<BoardData> items = boardDataRepository.getList();
+        for (BoardData item : items) {
+            Member member = item.getMember();
+            String userId = member.getUserId();
+            System.out.println(userId);
+        }
+    }
 }
