@@ -20,11 +20,12 @@ public class BoardData extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY) // 지연로딩
     @JoinColumn(name="userNo")
     @ToString.Exclude
     private Member member;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.LAZY)
+    @ToString.Exclude
     private List<HashTag> tags = new ArrayList<>();
 }
