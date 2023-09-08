@@ -35,4 +35,8 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member")
     private List<BoardData> boardDatas = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name="addressId")
+    private Address address;
 }
