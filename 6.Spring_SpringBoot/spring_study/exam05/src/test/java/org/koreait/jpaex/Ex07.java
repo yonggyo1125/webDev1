@@ -1,5 +1,8 @@
 package org.koreait.jpaex;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.koreait.entities.BoardData;
@@ -8,11 +11,14 @@ import org.koreait.repositories.BoardDataRepository;
 import org.koreait.repositories.HashTagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
+@TestPropertySource(locations="classpath:application-test.properties")
 public class Ex07 {
 
     @Autowired
@@ -20,6 +26,9 @@ public class Ex07 {
 
     @Autowired
     private HashTagRepository hashTagRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @BeforeEach
     void init() {
@@ -44,6 +53,7 @@ public class Ex07 {
         }
 
         boardDataRepository.saveAllAndFlush(items);
+        em.clear();
     }
 
     @Test
