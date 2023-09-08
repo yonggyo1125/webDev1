@@ -1,6 +1,7 @@
 package org.koreait.jpaex;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.koreait.entities.BoardData;
 import org.koreait.entities.HashTag;
 import org.koreait.repositories.BoardDataRepository;
@@ -43,5 +44,10 @@ public class Ex07 {
         }
 
         boardDataRepository.saveAllAndFlush(items);
+    }
+
+    @Test
+    void test1() {
+
     }
 }
