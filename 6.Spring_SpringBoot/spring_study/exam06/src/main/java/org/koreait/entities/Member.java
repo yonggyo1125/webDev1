@@ -9,6 +9,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data @Builder
 @NoArgsConstructor @AllArgsConstructor
-public class Member {
+public class Member extends BaseEntity {
+    @Id @GeneratedValue
+    private Long userNo;
 
+    private String userId;
+    private String userPw;
+    private String userNm;
+    private String email;
+    private String mobile;
 }
