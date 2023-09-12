@@ -17,9 +17,8 @@ public class SecurityConfig {
         http.formLogin(f -> {
            f.loginPage("/member/login")
                    .usernameParameter("userId")
-                   .passwordParameter("userPw")
-                   .successForwardUrl("/")
-                   .failureUrl("/member/login");
+                   .passwordParameter("userPw");
+
 
         });
 
