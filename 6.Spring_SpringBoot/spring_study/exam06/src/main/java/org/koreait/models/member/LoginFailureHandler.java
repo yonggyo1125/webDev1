@@ -16,13 +16,21 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
         HttpSession session = request.getSession();
         ResourceBundle bundle = ResourceBundle.getBundle("messages.validations");
 
+        session.removeAttribute("requiredUserId");
+        session.removeAttribute("requiredUserPw");
+        session.removeAttribute("globalError");
+        session.removeAttribute("userId");
+
         String userId = request.getParameter("userId");
         String userPw = request.getParameter("userPw");
-        if (userId == null || !userId.isBlank()) {
+
+        session.setAttribute("userId", userId);
+
+        if (userId == null || userId.isBlank()) {
             session.setAttribute("requiredUserId", bundle.getString("NotBlank.userId"));
         }
 
-        if (userPw == null || !userPw.isBlank()) {
+        if (userPw == null || userPw.isBlank()) {
             session.setAttribute("requiredUserPw", bundle.getString("NotBlank.userPw"));
         }
 
