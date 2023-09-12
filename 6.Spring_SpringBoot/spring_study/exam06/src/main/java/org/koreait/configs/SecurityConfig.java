@@ -1,5 +1,7 @@
 package org.koreait.configs;
 
+import org.koreait.models.member.LoginFailureHandler;
+import org.koreait.models.member.LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,7 +19,9 @@ public class SecurityConfig {
         http.formLogin(f -> {
            f.loginPage("/member/login")
                    .usernameParameter("userId")
-                   .passwordParameter("userPw");
+                   .passwordParameter("userPw")
+                   .successHandler(new LoginSuccessHandler())
+                   .failureHandler(new LoginFailureHandler());
 
 
         });
