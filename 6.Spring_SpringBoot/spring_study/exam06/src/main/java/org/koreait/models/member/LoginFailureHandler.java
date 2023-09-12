@@ -22,6 +22,13 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
             session.setAttribute("requiredUserId", bundle.getString("NotBlank.userId"));
         }
 
+        if (userPw == null || !userPw.isBlank()) {
+            session.setAttribute("requiredUserPw", bundle.getString("NotBlank.userPw"));
+        }
+
+        if (userId != null && !userId.isBlank() && userPw != null && !userPw.isBlank()) {
+            session.setAttribute("globalError", bundle.getString("login.fail"));
+        }
 
         response.sendRedirect(request.getContextPath() + "/member/login"); // 응답 헤더 Location: 주소
     }
