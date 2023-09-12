@@ -24,8 +24,14 @@ public class MemberJoinService {
             return;
         }
 
-        Member member = new ModelMapper().map(form, Member.class);
-        member.setUserPw(encoder.encode(form.getUserPw()));
+        //Member member = new ModelMapper().map(form, Member.class);
+        Member member = Member.builder()
+                        .userId(form.getUserId())
+                        .userPw(encoder.encode(form.getUserPw()))
+                        .userNm(form.getUserNm())
+                        .email(form.getEmail())
+                        .mobile(form.getMobile())
+                        .build();
 
         repository.saveAndFlush(member);
     }
