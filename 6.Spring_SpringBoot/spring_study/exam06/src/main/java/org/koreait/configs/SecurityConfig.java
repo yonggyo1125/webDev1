@@ -42,12 +42,13 @@ public class SecurityConfig {
         });
 
         /** 회원 인가 설정(접근 통제) */
+        /*
         http.authorizeHttpRequests(c -> {
                     c.requestMatchers("/mypage/**").authenticated() // 회원 전용(로그인)
                     .requestMatchers("/admin/**").hasAuthority("ADMIN") // 관리자 전용
                     .anyRequest().permitAll(); // 나머지 페이지는 전체 접근 가능
         });
-
+        */
         http.exceptionHandling(c -> {
             c.authenticationEntryPoint((req, res,  e) -> {
                 String URI = req.getRequestURI();
