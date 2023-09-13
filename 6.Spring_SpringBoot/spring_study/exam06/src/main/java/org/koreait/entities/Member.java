@@ -1,5 +1,6 @@
 package org.koreait.entities;
 
+import org.koreait.commons.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +28,7 @@ public class Member extends BaseEntity {
 
     @Column(length=11)
     private String mobile;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
 }

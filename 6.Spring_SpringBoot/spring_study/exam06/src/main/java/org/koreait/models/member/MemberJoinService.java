@@ -1,6 +1,7 @@
 package org.koreait.models.member;
 
 import lombok.RequiredArgsConstructor;
+import org.koreait.commons.Role;
 import org.koreait.controllers.member.JoinForm;
 import org.koreait.controllers.member.JoinValidator;
 import org.koreait.entities.Member;
@@ -31,6 +32,7 @@ public class MemberJoinService {
                         .userNm(form.getUserNm())
                         .email(form.getEmail())
                         .mobile(form.getMobile())
+                        .role(Role.USER)
                         .build();
 
         repository.saveAndFlush(member);
