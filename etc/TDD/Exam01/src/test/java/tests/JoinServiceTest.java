@@ -4,21 +4,21 @@ import commons.BadRequestException;
 import models.member.DuplicateUserIdException;
 import models.member.JoinService;
 import models.member.Member;
-import org.junit.jupiter.api.AfterEach;
+import models.member.ServiceManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("회원가입기능 테스트")
 public class JoinServiceTest {
 
     private JoinService joinService;
 
     @BeforeEach
     void init() {
-        joinService = new JoinService();
+        joinService = ServiceManager.getInstance().joinService();
     }
 
     private Member getMember() {
