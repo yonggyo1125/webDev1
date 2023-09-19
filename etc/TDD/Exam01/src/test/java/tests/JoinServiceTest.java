@@ -1,6 +1,7 @@
 package tests;
 
 import commons.BadRequestException;
+import models.member.DuplicateUserIdException;
 import models.member.JoinService;
 import models.member.Member;
 import org.junit.jupiter.api.AfterEach;
@@ -40,9 +41,21 @@ public class JoinServiceTest {
     @Test
     @DisplayName("필수항목(userId, userNm, userPw) 체크, 필수 항목 누락시 BadRequestException 발생")
     void requiredFieldsTest() {
-        requiredFieldEachTest("userId", "아이디");
-        requiredFieldEachTest("userPw", "비밀번호");
-        requiredFieldEachTest("userNm", "회원명");
+        assertAll(
+                () -> requiredFieldEachTest("userId", "아이디"),
+                () -> requiredFieldEachTest("userPw", "비밀번호"),
+                () -> requiredFieldEachTest("userNm", "회원명")
+        );
+    }
+
+    @Test
+    @DisplayName("중복 userId로 가입한 경우 DuplicateUserIdException 발생")
+    void duplicateUserIdTest() {
+        assertThrows(DuplicateUserIdException.class, () -> {
+            Member member = getMember();
+            joinService.join(member);
+            joinService.join(member);
+        });
     }
 
     private void requiredFieldEachTest(String field, String word) {
@@ -50,7 +63,7 @@ public class JoinServiceTest {
         if (field.equals("userId")) {
             member.setUserId(null);
         } else if (field.equals("userPw")) {
-            //member.setUserPw(null);
+            member.setUserPw(null);
         } else if (field.equals("userNm")) {
             member.setUserNm(null);
         }
