@@ -20,7 +20,17 @@ public class ServiceManager {
         return new JoinValidator();
     }
 
+    public LoginValidator loginValidator() {
+        return new LoginValidator();
+    }
+
+
     public JoinService joinService() {
+
         return new JoinService(memberDao(), joinValidator());
+    }
+
+    public LoginService loginService() {
+        return new LoginService(loginValidator());
     }
 }
